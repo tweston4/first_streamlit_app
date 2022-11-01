@@ -121,8 +121,6 @@ st.markdown(
 "Pick a random visual, make two visual changes to it, document those changes, and plot the visual.  \n"
 "You may need to pip install in our terminal for example pip install vega_datasets "
 )
-from vega_datasets import data
-
 np.random.seed(42)
 x = np.linspace(0, 10)
 y = x - 5 + np.random.randn(len(x))
@@ -154,7 +152,8 @@ with st.container():
     if "y_axis" not in st.session_state:
         st.session_state.y_axis = "temp_min"
 
-    source = data.seattle_weather()
+    source = pd.read_json('seattle_weather.json')
+
     
 
     chart = alt.Chart(source).mark_point().encode(
