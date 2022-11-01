@@ -131,7 +131,8 @@ df = pd.DataFrame({'x': x, 'y': y})
 
 chart = alt.Chart(df).mark_point().encode(
     x='x',
-    y='y'
+    y='y',
+    tooltip = ['x','y']
 )
 with st.container():
     st.altair_chart(chart + chart.transform_regression('x', 'y').mark_line(), use_container_width=True)
